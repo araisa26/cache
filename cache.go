@@ -12,7 +12,7 @@ func New() Cache {
 func (c Cache) Set(key string, value interface{}) {
 	cache = append(cache, map[string]interface{}{key: value})
 }
-func Get(key string) interface{} {
+func (c Cache) Get(key string) interface{} {
 	for _, i := range cache {
 		for k, v := range i {
 			if k == key {
