@@ -22,3 +22,13 @@ func (c Cache) Get(key string) interface{} {
 	}
 	return nil
 }
+
+func (c Cache) Delete(key string) {
+	for _, i := range cache {
+		for k := range i {
+			if k == key {
+				delete(i, key)
+			}
+		}
+	}
+}
