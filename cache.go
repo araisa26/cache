@@ -1,17 +1,19 @@
 package cache
 
-var Cache []map[string]interface{}
+type Cache []map[string]interface{}
 
-func New() *[]map[string]interface{} {
-	Cache := make([]map[string]interface{}, 0)
-	return &Cache
+var cache Cache
+
+func New() Cache {
+	cache := make([]map[string]interface{}, 0)
+	return cache
 }
 
-func Set(key string, value interface{}) {
-	Cache = append(Cache, map[string]interface{}{key: value})
+func (c Cache) Set(key string, value interface{}) {
+	cache = append(cache, map[string]interface{}{key: value})
 }
 func Get(key string) interface{} {
-	for _, i := range Cache {
+	for _, i := range cache {
 		for k, v := range i {
 			if k == key {
 				return v
